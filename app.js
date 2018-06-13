@@ -163,16 +163,9 @@ const searchCarousel = (city) => {
 
 
 const createOneCarousel = (event) => {
-   return `<div class="carousel-item" id="carouselItem">
-                           <div class="event-container">
-                               <div class="overlap"></div>
-                               <div class="d-block w-100 carousel-image" style="background-image: url('${event.images[1].url}')"></div>
-                               <div class="carousel-caption d-none d-block">
-                               <h5 class="carouselText">${event.dates.start.localDate}</h5>
-                               <p class="carouselText">${event.name}</p>
-                             </div>
-                           </div>
-                       </div>`;
+        let source = document.getElementById("carousel-template").innerHTML;
+        let template = Handlebars.compile(source);
+        return template(event);;
 }
 
 const addCarousel = (events) => {
