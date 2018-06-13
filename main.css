@@ -82,6 +82,9 @@ body {
 
 .find-row {
     padding-bottom: 40px;
+    background: url(5.jpg);
+    background-position: bottom;
+    background-size: cover;
 }
 
 img {

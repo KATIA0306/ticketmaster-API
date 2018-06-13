@@ -103,49 +103,19 @@ const searchEvents = (searchQuery, date, eventType, latlong) => {
        .then((response) => {
            return response.json()
        });
-}
+}   
 
 
 // Create template
 const createOneEvent = (event) => {
     if (event.priceRanges) {
-        return `<div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="eventContainer" data-toggle="modal" data-target=".event-${event.id}">
-
-        <div>
-        <img class="event" src="${event.images[0].url}" />
-            <p class="text-center eventsText">${event.name}</p>
-         </div>
-
-        <div class="modal fade event-${event.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-        <p class="text-center eventsText modal-title">${event.name}</p>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <img class="event" src="${event.images[5].url}" />
-            <p class="text-center modalText">${event.dates.start.localDate}</p>
-            <p class="text-center modalText">Price range: from ${event.priceRanges[0].min} to ${event.priceRanges[0].max} CAD</p>
-            <p class="text-center modalText">${event._embedded.venues[0].name}</p>
-            </div>
-
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-        </div>
-
-        </div>
-        </div>
-        </div>
-    </div>`;
-    } 
+        let source = document.getElementById("event-template").innerHTML;
+        let template = Handlebars.compile(source);
+        return template(event);
+    }  else {
+        return '';
+    }
 }
-
 
 const addEvents = (events) => {
     const eventsWithDuplicates = events.filter((event, index, self) =>
