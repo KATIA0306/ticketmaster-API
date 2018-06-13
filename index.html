@@ -33,16 +33,15 @@
     </div>
     <div class="container-fluid">
 
-        <div class="card bg-dark text-white">
-            <img class="card-img" src="5.jpg" alt="Card image">
-            <div class="card-img-overlay">
+        <div class="row text-white find-row">
+            <div class="col-lg-12">
                 <h1 class="myText">Find best events in your city
                     <br> Every day</h1>
 
-                <form onsubmit="return searchForm()" class="col-lg-5 col-m-5 col-sm-12">
+                <form onsubmit="return searchForm()" class="col-lg-4 col-md-5 col-sm-10 offset-sm-1 offset-md-0">
 
                     <div class="row">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <select id="eventType" class="form-control">
                                 <option>Event type</option>
                                 <option>concerts</option>
@@ -55,7 +54,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <input type="date" class="form-control" id="datePicker" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -64,13 +63,13 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <input id="pac-input" class="form-control" type="text" placeholder="Enter a location">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <input id="keyword" type="text" class="form-control search-input" name="search" placeholder="Keyword">
                             <div class="invalid-feedback">
                                 Please enter a search query.
@@ -79,7 +78,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <button type="submit" id="search" class="btn btn-primary" class="close" data-dismiss="modal" aria-label="Close">
                                 GO!
                             </button>
@@ -90,14 +89,12 @@
         </div>
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12" id="results">
+        <div class="row">
+            <div class="col-sm-12" id="results">
 
-                    <p class="text-center empty-result">
-                        <strong>Please fill in the search input.</strong>
-                    </p>
-                </div>
+                <p class="text-center empty-result">
+                    <strong>Please fill in the search input.</strong>
+                </p>
             </div>
         </div>
 

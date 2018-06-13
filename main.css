@@ -28,12 +28,6 @@ body {
     font-weight: bold;
 }
 
-form {
-    height: 6vw;
-    width: 50%;
-
-}
-
 .event-container {
     border: 1px solid white;
     box-sizing: border-box;
@@ -83,7 +77,11 @@ form {
     font-family: 'Titillium Web', sans-serif;
     font-size: 5vw;
     padding-top: 2vw;
-    padding-right: 2vw;
+    padding-left: 10px;
+}
+
+.find-row {
+    padding-bottom: 40px;
 }
 
 img {
