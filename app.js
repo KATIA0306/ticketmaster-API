@@ -84,8 +84,6 @@ const convertAddressToGeopoint = (address) => {
 
 };
 
-
-
 // take data from the form and fetch
 const searchEvents = (searchQuery, date, eventType, latlong) => {
    let url = "https://app.ticketmaster.com/discovery/v2/events.json?"
