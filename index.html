@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events search tool</title>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+
+<body>
+
+    <!-- Carousel -->
+    <div id="carouselControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="myCarousel">
+        </div>
+        <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="container-fluid">
+
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="5.jpg" alt="Card image">
+            <div class="card-img-overlay">
+                <h1 class="myText">Find best events in your city
+                    <br> Every day</h1>
+
+                <form onsubmit="return searchForm()" class="col-lg-5 col-m-5 col-sm-12">
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <select id="eventType" class="form-control">
+                                <option>Event type</option>
+                                <option>concerts</option>
+                                <option>theaters</option>
+                                <option>sports</option>
+                                <option>festivals</option>
+                                <option>family</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="datePicker" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <input id="pac-input" class="form-control" type="text" placeholder="Enter a location">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <input id="keyword" type="text" class="form-control search-input" name="search" placeholder="Keyword">
+                            <div class="invalid-feedback">
+                                Please enter a search query.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <button type="submit" id="search" class="btn btn-primary" class="close" data-dismiss="modal" aria-label="Close">
+                                GO!
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" id="results">
+
+                    <p class="text-center empty-result">
+                        <strong>Please fill in the search input.</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer font-small unique-color-dark mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-4 offset-lg-2" id="myFooter">
+
+                        <i class="fa fa-home mr-3"></i> Toronto, ON M6A 3E8
+                        <i class="fa fa-envelope mr-3"></i>bezrukova.catherina@gmail.com
+                        <i class="fa fa-phone mr-3"></i> + 1 437 791 5 999
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                <a href="#"> katiavcanade</a>
+            </div>
+
+        </footer>
+
+        <div id="map"></div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7YpnbseENAusRYJb0B9moyBpkrqnsBks&libraries=places&callback=initMap&sensor=false"
+            async defer></script>
+        <script src="app map.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.amd.js"></script>
+        <script src="app.js"></script>
+    </div>
+</body>
+
+</html>

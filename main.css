@@ -1,0 +1,162 @@
+p, a, label, body, li {
+	font-family: 'Titillium Web', sans-serif;
+}
+
+
+.empty-result {
+    margin-top: 30px;
+}
+
+.event {
+    width: 100%;
+    padding: 0px 0px;
+    margin: 10px 0px;
+    height: 180px;
+    border: 1px solid transparent;
+    margin: 0px;
+}
+
+body {
+    background-color:#dcdcdc;
+}
+
+#search {
+    width: 100%;
+    background-color: rgba(255,255,255,0.7);
+    border: 1px solid transparent;
+    color: #483d8b;
+    font-weight: bold;
+}
+
+form {
+    height: 6vw;
+    width: 50%;
+
+}
+
+.event-container {
+    border: 1px solid white;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    max-height: 750px;
+}
+
+.eventContainer {
+    border: 1px solid white;
+    height: 220px;
+    margin: 20px;
+    background:#dcdcdc;
+}
+
+.overlap {
+    position: absolute;
+    height: 750px;
+    width: 100%;
+    background-color: rgba(72,61,139,0.5);
+}
+
+.carousel-image {
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 600px;
+}
+
+.carouselText {
+    color:white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 5vw;
+    text-align: right;
+}
+
+.eventsText {
+    color: black;
+    font-family: 'Patua One', cursive;
+    font-size: 12px;
+    text-align: start;
+    font-weight: lighter;
+}
+
+.myText {
+    color: #00008b;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 5vw;
+    padding-top: 2vw;
+    padding-right: 2vw;
+}
+
+img {
+    border: 1px solid transparent;
+}
+
+#results {
+    margin-bottom: 50px;
+    justify-content: space-between;
+}
+
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
+
+#eventType {
+    margin-bottom: 10px;
+    background: rgba(60,179,113,0.4);
+    font-size: 18px;
+    color: white;
+    font-weight: normal;
+    border: 1px dotted transparent;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#datePicker {
+    margin-bottom: 10px;
+    background: rgba(60,179,113,0.4);
+    font-size: 18px;
+    color: white;
+    font-weight: normal;
+    border: 1px dotted transparent;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#pac-input {
+    margin-bottom: 10px;
+    background: rgba(60,179,113,0.4);
+    font-size: 18px;
+    color: white;
+    font-weight: normal;
+    border: 1px dotted transparent;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#keyword {
+    margin-bottom: 10px;
+    background: rgba(60,179,113,0.4);
+    font-size: 18px;
+    color: white;
+    font-weight: normal;
+    border: 1px dotted transparent;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+modalText {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 30px;
+}
+
+footer {
+    background-color: rgba(60,179,113,0.6);
+}
+#myFooter {
+    display: inline;
+    padding-top: 20px;
+}
+
+::-webkit-input-placeholder {
+    color: white !important;
+}   
+
+.eventContainer:hover{
+    border: 3px solid #00008b;
+}
