@@ -106,13 +106,9 @@ const searchEvents = (searchQuery, date, eventType, latlong) => {
 
 // Create template
 const createOneEvent = (event) => {
-    if (event.priceRanges) {
         let source = document.getElementById("event-template").innerHTML;
         let template = Handlebars.compile(source);
         return template(event);
-    }  else {
-        return '';
-    }
 }
 
 const addEvents = (events) => {

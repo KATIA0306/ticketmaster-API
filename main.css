@@ -82,7 +82,7 @@ body {
 
 .find-row {
     padding-bottom: 40px;
-    background: url(5.jpg);
+    background: url('5.jpg');
     background-position: bottom;
     background-size: cover;
 }
@@ -160,4 +160,14 @@ footer {
 
 .eventContainer:hover{
     border: 3px solid #00008b;
+}
+
+.modalContent {
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.eventsTextModal {
+    font-size: 20px;
 }
