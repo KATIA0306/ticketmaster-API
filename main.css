@@ -82,7 +82,7 @@ body {
 
 .find-row {
     padding-bottom: 40px;
-    background: url('5.jpg');
+    background: url('bg.jpg');
     background-position: bottom;
     background-size: cover;
 }
@@ -93,7 +93,8 @@ img {
 
 #results {
     margin-bottom: 50px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
 }
 
 .container-fluid {
@@ -170,4 +171,10 @@ footer {
 
 .eventsTextModal {
     font-size: 20px;
+}
+
+label {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    color: black;
 }

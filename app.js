@@ -1,8 +1,20 @@
 const results = document.getElementById("results");
 const carouselResults = document.getElementById("myCarousel");
 
-
-
+const convertAddressToGeopoint = (address) => {
+    const geocoder = new google.maps.Geocoder();
+ 
+    return new Promise(function (resolve, reject) {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                let latitude = results[0].geometry.location.lat();
+                let longitude = results[0].geometry.location.lng();
+                resolve(latitude + "," + longitude);
+            }
+        });
+    });
+ 
+ };
 
 const searchForm = () => {
 
@@ -39,7 +51,8 @@ const searchForm = () => {
    return false;
 }
 
-const clearResults = () => {
+
+const clearResults = () => { 
    results.innerHTML = "";
 }
 
@@ -67,22 +80,6 @@ const convertDate = (date) => {
    return date + "T00:00:00Z";
 }
 
-
-
-const convertAddressToGeopoint = (address) => {
-   const geocoder = new google.maps.Geocoder();
-
-   return new Promise(function (resolve, reject) {
-       geocoder.geocode({ 'address': address }, function (results, status) {
-           if (status == google.maps.GeocoderStatus.OK) {
-               let latitude = results[0].geometry.location.lat();
-               let longitude = results[0].geometry.location.lng();
-               resolve(latitude + "," + longitude);
-           }
-       });
-   });
-
-};
 
 // take data from the form and fetch
 const searchEvents = (searchQuery, date, eventType, latlong) => {
@@ -157,7 +154,6 @@ const searchCarousel = (city) => {
 }
 
 
-
 const createOneCarousel = (event) => {
         let source = document.getElementById("carousel-template").innerHTML;
         let template = Handlebars.compile(source);
@@ -185,3 +181,10 @@ requiredElement.classList.add("active");
 
 createCarousel();
 
+const myDate = () => {
+    let myDate = document.querySelector('#datePicker');
+    let today = new Date();
+    myDate.value = today.toISOString().substring(0, 10);
+  };
+
+  myDate ();
