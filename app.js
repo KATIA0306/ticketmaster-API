@@ -3,7 +3,8 @@ const carouselResults = document.getElementById("myCarousel");
 
 const convertAddressToGeopoint = (address) => {
     const geocoder = new google.maps.Geocoder();
- 
+
+
     return new Promise(function (resolve, reject) {
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -18,7 +19,7 @@ const convertAddressToGeopoint = (address) => {
 
 const searchForm = () => {
 
-   // calls data from the form /fetch data from 4 inputs and create variables for them
+   // calls data from the form 
 
    const searchQueryElem = document.querySelector('.search-input');
    const searchQuery = searchQueryElem.value;
