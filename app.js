@@ -1,12 +1,25 @@
 const results = document.getElementById("results");
 const carouselResults = document.getElementById("myCarousel");
 
+const convertAddressToGeopoint = (address) => {
+    const geocoder = new google.maps.Geocoder();
 
 
+    return new Promise(function (resolve, reject) {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                let latitude = results[0].geometry.location.lat();
+                let longitude = results[0].geometry.location.lng();
+                resolve(latitude + "," + longitude);
+            }
+        });
+    });
+ 
+ };
 
 const searchForm = () => {
 
-   // calls data from the form /fetch data from 4 inputs and create variables for them
+   // calls data from the form 
 
    const searchQueryElem = document.querySelector('.search-input');
    const searchQuery = searchQueryElem.value;
@@ -39,7 +52,8 @@ const searchForm = () => {
    return false;
 }
 
-const clearResults = () => {
+
+const clearResults = () => { 
    results.innerHTML = "";
 }
 
@@ -68,24 +82,6 @@ const convertDate = (date) => {
 }
 
 
-
-const convertAddressToGeopoint = (address) => {
-   const geocoder = new google.maps.Geocoder();
-
-   return new Promise(function (resolve, reject) {
-       geocoder.geocode({ 'address': address }, function (results, status) {
-           if (status == google.maps.GeocoderStatus.OK) {
-               let latitude = results[0].geometry.location.lat();
-               let longitude = results[0].geometry.location.lng();
-               resolve(latitude + "," + longitude);
-           }
-       });
-   });
-
-};
-
-
-
 // take data from the form and fetch
 const searchEvents = (searchQuery, date, eventType, latlong) => {
    let url = "https://app.ticketmaster.com/discovery/v2/events.json?"
@@ -103,49 +99,15 @@ const searchEvents = (searchQuery, date, eventType, latlong) => {
        .then((response) => {
            return response.json()
        });
-}
+}   
 
 
 // Create template
 const createOneEvent = (event) => {
-    if (event.priceRanges) {
-        return `<div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="eventContainer" data-toggle="modal" data-target=".event-${event.id}">
-
-        <div>
-        <img class="event" src="${event.images[0].url}" />
-            <p class="text-center eventsText">${event.name}</p>
-         </div>
-
-        <div class="modal fade event-${event.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-        <p class="text-center eventsText modal-title">${event.name}</p>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <img class="event" src="${event.images[5].url}" />
-            <p class="text-center modalText">${event.dates.start.localDate}</p>
-            <p class="text-center modalText">Price range: from ${event.priceRanges[0].min} to ${event.priceRanges[0].max} CAD</p>
-            <p class="text-center modalText">${event._embedded.venues[0].name}</p>
-            </div>
-
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-        </div>
-
-        </div>
-        </div>
-        </div>
-    </div>`;
-    } 
+        let source = document.getElementById("event-template").innerHTML;
+        let template = Handlebars.compile(source);
+        return template(event);
 }
-
 
 const addEvents = (events) => {
     const eventsWithDuplicates = events.filter((event, index, self) =>
@@ -193,18 +155,10 @@ const searchCarousel = (city) => {
 }
 
 
-
 const createOneCarousel = (event) => {
-   return `<div class="carousel-item" id="carouselItem">
-                           <div class="event-container">
-                               <div class="overlap"></div>
-                               <div class="d-block w-100 carousel-image" style="background-image: url('${event.images[1].url}')"></div>
-                               <div class="carousel-caption d-none d-block">
-                               <h5 class="carouselText">${event.dates.start.localDate}</h5>
-                               <p class="carouselText">${event.name}</p>
-                             </div>
-                           </div>
-                       </div>`;
+        let source = document.getElementById("carousel-template").innerHTML;
+        let template = Handlebars.compile(source);
+        return template(event);;
 }
 
 const addCarousel = (events) => {
@@ -228,3 +182,10 @@ requiredElement.classList.add("active");
 
 createCarousel();
 
+const myDate = () => {
+    let myDate = document.querySelector('#datePicker');
+    let today = new Date();
+    myDate.value = today.toISOString().substring(0, 10);
+  };
+
+  myDate ();

@@ -82,6 +82,9 @@ body {
 
 .find-row {
     padding-bottom: 40px;
+    background: url('bg.jpg');
+    background-position: bottom;
+    background-size: cover;
 }
 
 img {
@@ -90,7 +93,8 @@ img {
 
 #results {
     margin-bottom: 50px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
 }
 
 .container-fluid {
@@ -157,4 +161,20 @@ footer {
 
 .eventContainer:hover{
     border: 3px solid #00008b;
+}
+
+.modalContent {
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.eventsTextModal {
+    font-size: 20px;
+}
+
+label {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    color: black;
 }

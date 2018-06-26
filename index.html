@@ -33,17 +33,17 @@
     </div>
     <div class="container-fluid">
 
-        <div class="row text-white find-row">
+        <div class="row find-row">
             <div class="col-lg-12">
                 <h1 class="myText">Find best events in your city
                     <br> Every day</h1>
 
+    <!-- Form -->
                 <form onsubmit="return searchForm()" class="col-lg-4 col-md-5 col-sm-10 offset-sm-1 offset-md-0">
-
                     <div class="row">
                         <div class="col-sm-12">
-                            <select id="eventType" class="form-control">
-                                <option>Event type</option>
+                            <label for="eventType">Please select Event type:</label>
+                            <select id="eventType" class="form-control" required>
                                 <option>concerts</option>
                                 <option>theaters</option>
                                 <option>sports</option>
@@ -57,20 +57,20 @@
                         <div class="col-sm-12">
                             <input type="date" class="form-control" id="datePicker" />
                             <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
+                                <span class="glyphicon-calendar"></span>
                             </span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <input id="pac-input" class="form-control" type="text" placeholder="Enter a location">
+                            <input id="pac-input" class="form-control" type="text" placeholder="Enter a location" required="">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <input id="keyword" type="text" class="form-control search-input" name="search" placeholder="Keyword">
+                            <input id="keyword" type="text" class="form-control search-input" name="search" placeholder="Keyword" />
                             <div class="invalid-feedback">
                                 Please enter a search query.
                             </div>
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-
+    <!-- Search results -->
         <div class="row">
             <div class="col-sm-12" id="results">
 
@@ -98,7 +98,7 @@
             </div>
         </div>
 
-        <!-- Footer -->
+    <!-- Footer -->
         <footer class="page-footer font-small unique-color-dark mt-4">
             <div class="container">
                 <div class="row">
@@ -118,6 +118,58 @@
 
         </footer>
 
+     <!-- Handlebars event    -->
+        <script id="event-template" type="text/x-handlebars-template">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="eventContainer" data-toggle="modal" data-target = ".event-{{id}}">
+    
+                    <div>
+                        <img class="event" src = "{{images.0.url}}" />
+                        <p class="text-center eventsText">{{name}}</p>
+                    </div>
+    
+                    <div class="modal fade event-{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p class="text-center eventsTextModal modal-title">{{name}}</p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="event modalContent" style = "background-image: url({{images.5.url}})"></div>
+                                    <p class="text-center modalText">{{dates.start.localDate}}</p>
+                                    {{#if priceRanges}}
+                                    <p class="text-center modalText">Price range: from {{priceRanges.0.min}} to {{priceRanges.0.max}} CAD</p>
+                                    {{/if}}
+                                    <p class="text-center modalText">{{_embedded.venues.0.name}}</p>
+                                </div>
+    
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+    <!-- Handlebars carousel    -->
+        <script id="carousel-template" type="text/x-handlebars-template">
+            <div class="carousel-item" id="carouselItem">
+                <div class="event-container">
+                    <div class="overlap"></div>
+                    <div class="d-block w-100 carousel-image" style="background-image: url('{{images.1.url}}')"></div>
+                    <div class="carousel-caption d-none d-block">
+                        <h5 class="carouselText">{{dates.start.localDate}}</h5>
+                        <p class="carouselText">{{name}}</p>
+                    </div>
+                </div>
+            </div>
+        </script>
+
         <div id="map"></div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -127,8 +179,8 @@
             crossorigin="anonymous"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7YpnbseENAusRYJb0B9moyBpkrqnsBks&libraries=places&callback=initMap&sensor=false"
             async defer></script>
-        <script src="app map.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.amd.js"></script>
+        <script src="google maps.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
         <script src="app.js"></script>
     </div>
 </body>
